@@ -52,7 +52,7 @@ firebase projects:list
 
 以下コマンドで初期化。  
 
-````shell
+```shell
 firebase init
 ```
 
@@ -175,3 +175,45 @@ yarn build && firebase deploy
 以上でHostingは完了。  
 
 生成されるGitHub Actionsファイルには`${{ secrets.FIREBASE_SERVICE_ACCOUNT_SIMPLE_LEARNING_FIREBASE }}`のようなシークレット変数があるが、これは「プロジェクト - settings - secrets - Actions」から登録できる。  
+
+### SSG用の設定
+
+SSGではデフォルトでリロード時に404となります。  
+例えば以下のディレクトリを想定します。  
+
+```text
+/
+├── index.html
+├── about.html
+└── contact.html
+```
+
+SSGによるルーティングは以下のように行われることになります。  
+
+```text
+/
+├── index
+├── about
+└── contact
+```
+
+したがって、そのままでは404となってしまいます。  
+
+ということで、`firebase.json`に以下行を加えます。  
+
+```firebase.json
+{
+  "hosting": {
+    "public": "dist",
++    "cleanUrls": true,
++    "trailingSlash": false,
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}
+```
+
+`trailingSlash`はどちらでもOKです。  
