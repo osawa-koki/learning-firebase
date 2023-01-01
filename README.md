@@ -173,3 +173,5 @@ yarn build && firebase deploy
 ```
 
 以上でHostingは完了。  
+
+生成されるGitHub Actionsファイルには`${{ secrets.FIREBASE_SERVICE_ACCOUNT_SIMPLE_LEARNING_FIREBASE }}`のようなシークレット変数があるが、これは「プロジェクト - settings - secrets - Actions」から登録できる。  
