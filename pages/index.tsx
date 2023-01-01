@@ -9,7 +9,9 @@ export default function Home() {
         <PageBlock />
         <p>以下のリストは更新が反映されているかを確認するためのものです。</p>
         <ul>
-          <li>りんご</li>
+          <li>りんご 🍎</li>
+          <li>ごりら 🦍</li>
+          <li>らっぱ 📯</li>
         </ul>
       </div>
     </>
